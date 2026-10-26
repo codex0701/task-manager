@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white p-6">
+  <form action="/create" method="post" class="space-y-3">
+    <input type="text" name="title" required placeholder="Title goes here.."
+      class="w-full bg-zinc-800 rounded px-4 py-3 outline-none" />
+    <textarea name="details" rows="3" placeholder="Write your task details here..."
+      class="w-full bg-zinc-800 rounded px-4 py-3 outline-none"></textarea>
+    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded font-semibold">Create Task</button>
+  </form>
+
+  <div class="flex flex-wrap gap-3 mt-12">
+    <% tasks.forEach(function(task) { %>
+      <div class="w-48 bg-zinc-800 rounded p-4">
+        <h2 class="text-lg font-bold break-words"><%= task %></h2>
+        <a href="/file/<%= encodeURIComponent(task) %>" class="text-blue-500 text-sm mt-3 inline-block">read more</a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
